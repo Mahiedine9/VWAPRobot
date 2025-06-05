@@ -7,6 +7,8 @@
 #property link      "https://www.mql5.com"
 #property version   "1.00"
 
+#include "IStopLoss.mqh"
+
 class FixedStopLoss : public IStopLoss
 {
 private:
@@ -19,7 +21,7 @@ public:
       point    = _point;
    }
 
-   double Calculate(double entryPrice, int direction)
+   double Calculate(int direction, double entryPrice) override
    {
       return (direction == 1)
          ? entryPrice - slPoints * point
